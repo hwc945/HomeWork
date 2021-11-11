@@ -39,7 +39,7 @@ void Push( LinkStack &s, SElemType e)
 	s=p;
 }
 
-void Push2( LinkStack2 &s, int e)
+void Push2( LinkStack2 &s, SElemType2 e)
 {
 	LinkStack2 p;
 	p=(LinkStack2)malloc(sizeof(StackNode2));
@@ -49,7 +49,7 @@ void Push2( LinkStack2 &s, int e)
 }
 
 //³öÕ» Pop( &s, &e )
-status Pop( LinkStack &s, SElemType &e )
+SElemType Pop( LinkStack &s, SElemType &e )
 {	
 	LinkStack p;
 	if (s==NULL)   
@@ -61,7 +61,7 @@ status Pop( LinkStack &s, SElemType &e )
 	return OK;
 }
 
-status Pop2( LinkStack2 &s, int &e )
+SElemType2 Pop2( LinkStack2 &s, SElemType2 &e )
 {	
 	LinkStack2 p;
 	if (s==NULL)   
@@ -81,7 +81,7 @@ SElemType GetTop(LinkStack s)
 	return s->data; 
 } 
 
-int GetTop(LinkStack2 s)
+SElemType2 GetTop2(LinkStack2 s)
 {
 	if (s==NULL) 
 		return ERROR; 

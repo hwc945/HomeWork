@@ -1,68 +1,9 @@
-#include"LinkStack.h"
 #include "Operate.h"
 int main(){
-	
-	LinkStack optr;//运算符栈 
-	LinkStack2 opnd;//运算数栈 
-	
-	InitStack(optr);
-	InitStack2(opnd);
-	
-	Push(optr,'#');
-	char c,prec;
-	char x;
-	int temp=0;
-	char theta;
-	int a,b;
-	char op[]={'+','-','*','/','(',')','#'};
-	prec='0';
-	c=getchar(); 
-	while(c!='#'||GetTop(optr)!='#'){
-		if(!In(c,op)){
-			if(!In(prec,op)){
-				temp*=10; 
-				temp+=((int)c-48);
-				prec=c;
-				c=getchar();
-			}
-			else{
-				temp=(int)c-48;
-				prec=c;
-				c=getchar();
-			}
-			
-		} else {
-			switch(Precede(GetTop(optr),c)){
-				case '<':
-					Push(optr,c);
-					if(temp!=-1&&c!='(')
-						Push2(opnd,temp);
-					temp=0;
-					prec=c;
-					c=getchar();
-					break;
-				case '=':
-					Pop(optr,x);
-					prec=c;
-					c=getchar();
-					break;
-				case '>':
-					if(temp!=-1)
-						Push2(opnd,temp);
-					temp=-1;
-					
-					Pop(optr,theta);
-					Pop2(opnd,b);
-					Pop2(opnd,a);
-					Push2(opnd,Operate(a,theta,b));
-					break;
-			}
-			
-		}
-	}
-	printf("%d",GetTop(opnd));
-	
-	return 0;
+		printf("请输入中缀表达式，末尾以‘#’结束:\n");
+		SElemType2 result = calculate();
+		printf("该中缀表达式结果为：%.3lf",result);
+		return 0;
 }
 
-//1+2*((1+2)*3)#
+
